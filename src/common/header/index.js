@@ -49,7 +49,7 @@ class Header extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        isFocus: state.isFocus,
+        isFocus: state.header.isFocus,
     }
     
 }
