@@ -1,17 +1,9 @@
 import React, { Component } from 'react'
 import {CSSTransition} from 'react-transition-group'
 import {HeaderWrapper, Logo, Nav, NavItem, NavSearch, Addition, Button, SearchWrapper} from './style'
+import {connect} from 'react-redux'
 
-class Header extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            isFocus: false
-        }
-        this.handleOnBlur = this.handleOnBlur.bind(this)
-        this.handleOnFocus = this.handleOnFocus.bind(this)
-    }
-    
+class Header extends Component {    
     render() {
         return(
             <HeaderWrapper >
@@ -23,19 +15,21 @@ class Header extends Component {
                         <span className='iconfont'>&#xe636;</span>
                     </ NavItem>
                     <NavItem className='right'>登陆</ NavItem>
-                    <SearchWrapper 
-                        onFocus={this.handleOnFocus} 
-                        onBlur={this.handleOnBlur}
-                    >
+                    <SearchWrapper>
                         <CSSTransition 
-                            in={this.state.isFocus}
+                            in={this.props.isFocus}
                             timeout={200}
                             classNames='slide'
                         >
-                            <NavSearch className={this.state.isFoucus? 'yesFocus': ''}/>
+                            <NavSearch 
+                                className={this.props.isFocus? 'yesFocus': ''}
+                                onFocus={this.props.handleOnFocus} 
+                                onBlur={this.props.handleOnBlur}
+                            
+                            />
                         </CSSTransition>
                             <span 
-                                className={this.state.isFoucus? 'yesFocus iconfont': 'iconfont'}
+                                className={this.props.isFocus? 'yesFocus iconfont': 'iconfont'}
                                 >&#xe637;
                             </span>
                         
@@ -51,17 +45,30 @@ class Header extends Component {
             </HeaderWrapper>
         )
     }
+}
 
-    handleOnBlur() {
-        this.setState(()=> ({
-            isFoucus: false
-        }))
+const mapStateToProps = (state) => {
+    return {
+        isFocus: state.isFocus,
     }
-    handleOnFocus() {
-        this.setState(() => ({
-            isFoucus:true
-        }))
+    
+}
+const mapDispatchToProps = (dispatch) => {
+    return {
+        handleOnFocus() {
+            const action  = {
+                type: 'changeToFocus'
+            }
+            dispatch(action)
+        },
+
+        handleOnBlur() {
+            const action = {
+                type: 'changeToBlur'
+            }
+            dispatch(action)
+        }
     }
 }
 
-export default Header
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
