@@ -1,9 +1,48 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {CSSTransition} from 'react-transition-group'
-import {HeaderWrapper, Logo, Nav, NavItem, NavSearch, Addition, Button, SearchWrapper} from './style'
 import {actionCreators} from './store'
+import {    HeaderWrapper, 
+            Logo,
+            Nav, 
+            NavItem, 
+            NavSearch, 
+            Addition, 
+            Button, 
+            SearchWrapper, 
+            SearchInfo,
+            SearchInfoTitle,
+            SearchSwitch,
+            SearchItem,
+            SearchItemList,
 
+        } from './style'
+
+const getListArea = (show) => {
+    if (show) {
+        return (
+            <SearchInfo>
+                <SearchSwitch>换一批</SearchSwitch>
+                <SearchInfoTitle>热门搜索</SearchInfoTitle>
+                <SearchItemList>
+                    <SearchItem>理财</SearchItem>
+                    <SearchItem>毕业</SearchItem>
+                    <SearchItem>手帐</SearchItem>
+                    <SearchItem>简书交友</SearchItem>
+                    <SearchItem>react</SearchItem>
+                    <SearchItem>阿伟</SearchItem>
+                    <SearchItem>七七</SearchItem>
+                    <SearchItem>故事</SearchItem>   
+                </SearchItemList>
+            </SearchInfo>
+        )
+    }
+    else {
+        return null
+    }
+}
+
+        
 const Header = (props) => {
     return(
         <HeaderWrapper >
@@ -32,6 +71,8 @@ const Header = (props) => {
                             className={props.isFocus? 'yesFocus iconfont': 'iconfont'}
                             >&#xe637;
                         </span>
+                    
+                    {getListArea(props.isFocus)}
                     
                 </SearchWrapper>
             </Nav>
