@@ -41,6 +41,9 @@ class Header extends Component {
     }
 
     render() {
+
+        const {isFocus, handleOnFocus, handleOnBlur, list} = this.props
+
         return(
             <HeaderWrapper >
                 <Logo />
@@ -53,23 +56,23 @@ class Header extends Component {
                     <NavItem className='right'>登陆</ NavItem>
                     <SearchWrapper>
                         <CSSTransition 
-                            in={this.props.isFocus}
+                            in={isFocus}
                             timeout={200}
                             classNames='slide'
                         >
                             <NavSearch 
-                                className={this.props.isFocus? 'yesFocus': ''}
-                                onFocus={this.props.handleOnFocus} 
-                                onBlur={this.props.handleOnBlur}
+                                className={isFocus? 'yesFocus': ''}
+                                onFocus={() => handleOnFocus(list)} 
+                                onBlur={handleOnBlur}
                             
                             />
                         </CSSTransition>
                             <span 
-                                className={this.props.isFocus? 'yesFocus iconfont': 'iconfont'}
+                                className={isFocus? 'yesFocus iconfont': 'iconfont'}
                                 >&#xe637;
                             </span>
                         
-                        {this.getListArea(this.props.isFocus)}
+                        {this.getListArea(isFocus)}
                         
                     </SearchWrapper>
                 </Nav>
@@ -95,8 +98,10 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        handleOnFocus() {
-            dispatch(actionCreators.GET_REMOTE_LIST())
+        handleOnFocus(list) {
+            if (list.size === 0) {
+                dispatch(actionCreators.GET_REMOTE_LIST())
+            }
             dispatch(actionCreators.SEARCH_FOCUS())
         },
 

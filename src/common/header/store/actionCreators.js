@@ -2,6 +2,11 @@ import * as constants from './constants'
 import axios from 'axios'
 import { fromJS } from 'immutable'
 
+const changeList = (data) => ({
+    type: constants.CHANGE_LIST,
+    data: fromJS(data)
+})
+
 export const SEARCH_FOCUS = () => {
     return {
         type: constants.SEARCH_FOCUS
@@ -14,10 +19,6 @@ export const SEARCH_BLUR = () => {
     }
 }
 
-export const changeList = (data) => ({
-    type: constants.CHANGE_LIST,
-    data: fromJS(data)
-})
 
 export const GET_REMOTE_LIST = () => {
     return (dispatch) => {
