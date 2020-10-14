@@ -123,7 +123,8 @@ export const SearchInfo = styled.div`
     top:59px;
     width:240px;
     padding:0 20px;
-    box-shadow: 0 0 8px rgba(0,0,0,.2); 
+    box-shadow: 0 0 8px rgba(0,0,0,.2);
+    background-color: white;
 `
 export const SearchSwitch = styled.div`
     float:right;

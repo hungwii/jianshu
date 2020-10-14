@@ -18,7 +18,7 @@ export const HomeLeft = styled.div`
 
 export const HomeRight = styled.div`
     float: right;
-    width: 240px;
+    width: 300px;
 `
 
 export const TopicWrapper = styled.div`
@@ -68,4 +68,24 @@ export const ListInfo = styled.div`
         font-size: 13px;
         color: #999;
     }
+`
+
+export const WriterWrapper = styled.div`
+    width: 280px;
+    height : 250px;
+    // border: 1px solid #dcdcdc;
+    margin-top: 30px;
+    border-radius:3px;
+    line-height: 300px;
+    text-align: center;
+`
+export const WriterItem = styled.div`
+    
+    .pic{
+        float: left;
+        margin-bottom: 7px;
+        width: 280px;
+        height: 50px;
+    }
+
 `

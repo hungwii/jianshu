@@ -3,6 +3,7 @@ import {HomeWrapper, HomeLeft, HomeRight} from './style'
 
 import Recommend from './Recommend'
 import List from './List'
+import Author from './Author'
 
 class Home extends Component {
     render() {
@@ -16,7 +17,9 @@ class Home extends Component {
                     <Recommend></Recommend>
                     <List></List>
                 </HomeLeft>
-                <HomeRight>right</HomeRight>
+                <HomeRight>
+                    <Author></Author>
+                </HomeRight>
             </HomeWrapper>
         )
     }
