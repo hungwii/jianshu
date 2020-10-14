@@ -44,3 +44,28 @@ export const TopicItem = styled.div`
         margin-right: 10px;
     }
 `
+export const ListItem = styled.div`
+    display: flow-root;
+    padding: 20px 0;
+    border-bottom: 1px solid #dcdcdc;
+    .pic {
+        float: right;
+        width: 125px;
+        height: 100px;
+        border-radius: 10px;
+    }
+`
+export const ListInfo = styled.div`
+    width: 500px;
+    .title{
+        line-height: 27px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+    }
+    .desc {
+        line-height: 24px;
+        font-size: 13px;
+        color: #999;
+    }
+`

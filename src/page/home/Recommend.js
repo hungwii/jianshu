@@ -9,7 +9,7 @@ class Recommend extends Component {
                 {
                     this.props.list.map((item) => {
                         return (
-                            <TopicItem kry={item.get("id")}>
+                            <TopicItem key={item.get("id")}>
                                 <img 
                                     className="topic-pic"
                                     src={item.get("imgUrl")}

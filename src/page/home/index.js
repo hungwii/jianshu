@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {HomeWrapper, HomeLeft, HomeRight} from './style'
 
 import Recommend from './Recommend'
+import List from './List'
 
 class Home extends Component {
     render() {
@@ -13,6 +14,7 @@ class Home extends Component {
                          alt='banner-img'
                     ></img>
                     <Recommend></Recommend>
+                    <List></List>
                 </HomeLeft>
                 <HomeRight>right</HomeRight>
             </HomeWrapper>
