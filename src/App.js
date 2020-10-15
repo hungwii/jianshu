@@ -14,9 +14,9 @@ function App() {
       <div className="App">
         <GlobalStyle />
         <IconGlobal />
-        <Header></Header>
         <BrowserRouter>
           <>
+            <Header></Header>
             <Route path='/' exact component={Home}></Route>
             <Route path='/detail' exact render={() => <div>detail</div>}></Route>
           </>

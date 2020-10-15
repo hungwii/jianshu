@@ -1,29 +1,33 @@
 import React, {Component} from 'react'
-import {ListItem, ListInfo} from './style'
 import {connect} from 'react-redux'
-
+import {Link} from 'react-router-dom'
+import { actionCreators } from './store'
+import {ListItem, ListInfo, LoadMore} from './style'
 class List extends Component {
     render() {
         return(
             <>
                 {
-                    this.props.list.map((item) => {
+                    this.props.list.map((item,index) => {
                         return(
-                            <ListItem key={item.get("id")}>
-                                <img 
-                                    className="pic"
-                                    src={item.get("imgUrl")}
-                                    alt={item.get("title")}
-                                />
-                                <ListInfo>
-                                    <h3 className="title">{item.get("title")}</h3>
-                                    <p className="desc">{item.get("desc")}</p>
-                                </ListInfo>
+                            <Link key={index} to='/detail'>
+                                <ListItem >
+                                    <img 
+                                        className="pic"
+                                        src={item.get("imgUrl")}
+                                        alt={item.get("title")}
+                                    />
+                                    <ListInfo>
+                                        <h3 className="title">{item.get("title")}</h3>
+                                        <p className="desc">{item.get("desc")}</p>
+                                    </ListInfo>
 
-                            </ListItem>
+                                </ListItem>
+                            </Link>
                         )
                     })
                 }
+                <LoadMore onClick={this.props.addHomeList}>加载更多</LoadMore>
             </>
         )
     }
@@ -32,4 +36,11 @@ class List extends Component {
 const mapStatesToProps = (state) => ({
     list: state.getIn(["home", "articleList"])
 })
-export default connect(mapStatesToProps, null)(List)
+
+const mapDispatchToProps = (dispatch) => ({
+    addHomeList() {
+        const action = actionCreators.getHomeList()
+        dispatch(action)
+    }
+})
+export default connect(mapStatesToProps, mapDispatchToProps)(List)

@@ -15,6 +15,8 @@ export default (state = defaultState, action) => {
         articleList: fromJS(action.articleList),
         writerList: fromJS(action.writerList),
       })
+    case constants.ADD_LIST_DATA:
+      return state.set("articleList", state.get("articleList").concat(action.addListData))
     default:
       return state;
   }
