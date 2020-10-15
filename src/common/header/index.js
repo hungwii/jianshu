@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {CSSTransition} from 'react-transition-group'
 import {Link} from 'react-router-dom'
@@ -19,7 +19,7 @@ import {    HeaderWrapper,
 
         } from './style'
 
-class Header extends Component {
+class Header extends PureComponent {
     getListArea = (show) => {
         if (show) {
             return (

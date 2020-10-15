@@ -1,9 +1,9 @@
-import React, {Component} from 'react'
+import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import { actionCreators } from './store'
 import {ListItem, ListInfo, LoadMore} from './style'
-class List extends Component {
+class List extends PureComponent {
     render() {
         return(
             <>

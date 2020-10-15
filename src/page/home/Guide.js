@@ -1,6 +1,6 @@
-import React, {Component} from 'react'
+import React, {PureComponent} from 'react'
 
-class Guide extends Component {
+class Guide extends PureComponent {
     render() {
         return(
             <div>Guide</div>

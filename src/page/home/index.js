@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {HomeWrapper, HomeLeft, HomeRight} from './style'
 import {actionCreators} from './store'
@@ -9,7 +9,7 @@ import List from './List'
 import Author from './Author'
 import Guide from './Guide'
 
-class Home extends Component {
+class Home extends PureComponent {
     render() {
         return(
             <HomeWrapper>
