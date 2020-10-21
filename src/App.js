@@ -4,7 +4,7 @@ import store from './store/index'
 import {Provider} from 'react-redux'
 import {BrowserRouter, Route} from 'react-router-dom'
 import Home from './page/home/index.js'
-import Detail from './page/detail/index.js'
+import Detail from './page/detail/loadable.js'
 import Login from './page/login/index'
 
 import {GlobalStyle} from './style'

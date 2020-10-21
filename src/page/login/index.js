@@ -7,7 +7,6 @@ import {LoginWrapper,LoginBox, Input, Button} from './style'
 
 class Login extends PureComponent {
     render () {
-        console.log(this.props.isLogin)
         if (!this.props.isLogin) {
             return (
                 <LoginWrapper>

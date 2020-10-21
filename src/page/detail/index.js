@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {actionCreators} from './store'
+import {withRouter} from 'react-router-dom'
 
 
 import {Contant, DetailWrapper, Header} from './style'
@@ -36,4 +37,4 @@ const mapDispatchToProps = (dispatch) => ({
         dispatch(actionCreators.getDetailData(ID))
     }
 })
-export default connect(mapStateTpProps,mapDispatchToProps)(Detail);
+export default connect(mapStateTpProps,mapDispatchToProps)(withRouter(Detail));
