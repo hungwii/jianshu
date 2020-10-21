@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {CSSTransition} from 'react-transition-group'
 import {Link} from 'react-router-dom'
 import {actionCreators} from './store'
+import {actionCreators as loginActionCreators} from '../../page/login/store'
 import {    HeaderWrapper, 
             Logo,
             Nav, 
@@ -44,7 +45,6 @@ class Header extends PureComponent {
     render() {
 
         const {isFocus, handleOnFocus, handleOnBlur, list} = this.props
-
         return(
             <HeaderWrapper >
                 <Link to='/'>
@@ -56,7 +56,11 @@ class Header extends PureComponent {
                     <NavItem className='right'>
                         <span className='iconfont'>&#xe636;</span>
                     </ NavItem>
-                    <NavItem className='right'>登陆</ NavItem>
+                    {
+                        this.props.isLogin ? 
+                            <Link to={'/'}><NavItem className='right' onClick={this.props.logout}>退出</ NavItem></Link>: 
+                            <Link to={'/login'}><NavItem className='right'>登陆</ NavItem></Link> 
+                    }
                     <SearchWrapper>
                         <CSSTransition 
                             in={isFocus}
@@ -95,7 +99,8 @@ class Header extends PureComponent {
 const mapStateToProps = (state) => {
     return {
         isFocus: state.getIn(['header', 'isFocus']),
-        list: state.getIn(['header', 'list'])
+        list: state.getIn(['header', 'list']),
+        isLogin: state.getIn(['login', 'isLogin'])
     }
     
 }
@@ -110,6 +115,10 @@ const mapDispatchToProps = (dispatch) => {
 
         handleOnBlur() {
             dispatch(actionCreators.SEARCH_BLUR())
+        },
+
+        logout() {
+            dispatch(loginActionCreators.tryToLogout())
         }
     }
 }
